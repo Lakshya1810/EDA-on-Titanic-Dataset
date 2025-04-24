@@ -73,6 +73,8 @@ plt.show()
 
 df.to_csv("cleaned_titanic.csv", index=False)
 
+```
+
 🔮 Future Updates
 
 Planned improvements to enhance the project:
@@ -100,4 +102,3 @@ Planned improvements to enhance the project:
 Make sure to install the required packages:
 
 pip install pandas matplotlib seaborn
-
