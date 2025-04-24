@@ -1,11 +1,28 @@
-Titanic Data Analysis Project
+# 🚢 Titanic Survival Analysis
 
-This project explores the famous Titanic dataset to understand the characteristics of passengers and analyze the factors that influenced survival rates. It involves basic data cleaning, visualization, and exporting a cleaned version of the dataset.
-📂 Dataset
+This project explores the **Titanic dataset** to understand the characteristics of passengers and analyze the factors that influenced survival rates. It includes **data cleaning**, **exploratory visualizations**, and saving a cleaned dataset for further modeling.
 
-The dataset used is the Titanic dataset provided by Data Science Dojo. It includes information about the passengers such as age, sex, ticket class, fare, and whether they survived the Titanic disaster.
-🛠️ Libraries Used
+---
 
+## 📂 Dataset
+
+The dataset is sourced from [Data Science Dojo](https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv).  
+It includes features such as:
+
+- **PassengerId**: Unique ID
+- **Survived**: Survival (0 = No, 1 = Yes)
+- **Pclass**: Ticket class (1st, 2nd, 3rd)
+- **Name, Sex, Age**: Personal info
+- **SibSp, Parch**: Number of siblings/spouses & parents/children aboard
+- **Fare**: Ticket price
+- **Cabin**: Cabin number
+- **Embarked**: Port of embarkation
+
+---
+
+## 🛠️ Libraries Used
+
+```python
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -23,27 +40,34 @@ df.describe()
 
 3. Handle Missing Values
 
-    Fill missing values in Age with the median.
+    ✅ Fill missing Age values with the median.
 
-    Drop rows with missing Embarked values.
+    ✅ Drop rows where Embarked is missing.
 
-    Fill missing Cabin entries with 'Unknown'.
+    ✅ Replace missing Cabin entries with 'Unknown'.
 
 df['Age'] = df['Age'].fillna(df['Age'].median())
 df.dropna(subset=['Embarked'], inplace=True)
 df['Cabin'] = df['Cabin'].fillna('Unknown')
 
 4. Data Visualization
-
-    Survival Count
-
-    Survival by Gender
-
-    Age Distribution
+🔹 Survival Count
 
 sns.countplot(x='Survived', data=df)
+plt.title('Survival Count')
+plt.show()
+
+🔹 Survival by Gender
+
 sns.countplot(x='Survived', hue='Sex', data=df)
+plt.title('Survival by Gender')
+plt.show()
+
+🔹 Age Distribution
+
 sns.histplot(df['Age'], bins=30, kde=True)
+plt.title('Age Distribution')
+plt.show()
 
 5. Save Cleaned Dataset
 
@@ -51,28 +75,29 @@ df.to_csv("cleaned_titanic.csv", index=False)
 
 🔮 Future Updates
 
-Here are some planned improvements and updates to this project:
+Planned improvements to enhance the project:
 
-Perform feature engineering to create new insights (e.g., title extraction from names, family size).
+✨ Feature Engineering (e.g., title from Name, family size)
 
-Encode categorical variables for machine learning.
+🔢 Encode categorical variables for ML
 
-Build predictive models using Logistic Regression, Random Forest, and KNN to predict survival.
+🤖 Build predictive models (Logistic Regression, Random Forest, KNN)
 
-Evaluate model performance using confusion matrix, ROC curve, and classification report.
+📈 Evaluate models (Confusion Matrix, ROC Curve, Classification Report)
 
-Use cross-validation to improve model generalization.
+🔁 Apply Cross-Validation
 
-Visualize correlations using a heatmap.
+📊 Correlation heatmap and feature importance
 
-    Deploy the model using Flask or Streamlit for interactive prediction.
+    🌐 Deploy the model using Flask or Streamlit
 
 📁 Output
 
-    cleaned_titanic.csv: The cleaned version of the dataset after handling missing values.
+    cleaned_titanic.csv: Cleaned dataset after handling missing values
 
-📌 Notes
+⚙️ Setup Instructions
 
-Make sure to install the required Python packages if not already installed:
+Make sure to install the required packages:
 
 pip install pandas matplotlib seaborn
+
